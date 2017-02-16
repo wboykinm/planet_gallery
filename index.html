@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta content="IE=edge" http-equiv="X-UA-Compatible">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+  <meta content="" name="description">
+  <meta content="" name="author">
+  <title>Deconstructed planet</title>
+  <link href="https://maxcdn.bootstrapcdn.com/bootswatch/3.3.7/journal/bootstrap.min.css" rel="stylesheet">
+  <link href="jquery.bsPhotoGallery.css" rel="stylesheet">
+  <script src="//code.jquery.com/jquery-1.10.2.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <script src="jquery.bsPhotoGallery.js"></script>
+  <script>
+      $(document).ready(function(){
+        $('ul.first').bsPhotoGallery({
+          "classes" : "col-lg-2 col-md-4 col-sm-3 col-xs-4 col-xxs-12",
+          "hasModal" : true,
+          // "fullHeight" : false
+        });
+      });
+  </script>
+  <style>
+    @import url(https://fonts.googleapis.com/css?family=Bree+Serif);
+      ul {
+          padding:0 0 0 0;
+          margin:0 0 40px 0;
+      }
+      ul li {
+          list-style:none;
+          margin-bottom:10px;
+      }
+    .text {
+      /*font-family: 'Bree Serif';*/
+      color:#666;
+      font-size:11px;
+      margin-bottom:10px;
+      padding:12px;
+      background:#fff;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="row" style="text-align:center; padding:0 0 20px 0; margin-bottom:40px;">
+      <h1>Deconstructed Planet</h1>
+      <h4><a href="https://medium.com/planet-stories/drawing-the-planet-in-brushstrokes-bc54a686fb30#.exz251be8" target="_blank">Deep-learning-assisted renderings</a> of satellite imagery in a generally-cubist form.</h4>
+    </div>
+    <ul class="row first">
+      <li>
+        <img alt="Rocking the night away" src="http://demo.michaelsoriano.com/images/photodune-174908-rocking-the-night-away-xs.jpg">
+        <div class="text">
+          Consectetur adipiscing elit
+        </div>
+      </li>
+      <li>
+        <img alt="Yellow sign" src="http://demo.michaelsoriano.com/images/photodune-287182-blah-blah-blah-yellow-road-sign-xs.jpg">
+        <div class="text">
+          Lorem ipsum dolor sit amet, labore et dolore magna aliqua. Ut enim ad minim veniam
+        </div>
+      </li>
+      <li>
+        <img alt="Colors" src="http://demo.michaelsoriano.com/images/photodune-460760-colors-xs.jpg">
+        <div class="text">
+          Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old.
+        </div>
+      </li>
+    </ul>
+  </div><!-- /container -->
+</body>
+</html>
