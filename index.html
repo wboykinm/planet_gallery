@@ -8,7 +8,7 @@
   <meta content="Deconstructed planet" name="description">
   <meta content="Bill Morris" name="author">
   <title>Deconstructed planet</title>
-  <link href="https://maxcdn.bootstrapcdn.com/bootswatch/3.3.7/darkly/bootstrap.min.css" rel="stylesheet">
+  <link href="https://maxcdn.bootstrapcdn.com/bootswatch/3.3.7/yeti/bootstrap.min.css" rel="stylesheet">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
   <style>
@@ -16,17 +16,110 @@
     .caption-hidden {
       visibility: hidden;
     }
+    .entry {
+      cursor: pointer; 
+      cursor: hand; 
+    }
+    #headerwrap {
+    	background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(img/city_hall.jpg) no-repeat center top;
+    	margin-top: -50px;
+    	padding-top:120px;
+    	text-align:center;
+    	background-attachment: relative;
+    	background-position: center center;
+    	min-height: 650px;
+    	width: 100%;
+    	
+        -webkit-background-size: 100%;
+        -moz-background-size: 100%;
+        -o-background-size: 100%;
+        background-size: 100%;
+
+        -webkit-background-size: cover;
+        -moz-background-size: cover;
+        -o-background-size: cover;
+        background-size: cover;
+    }
+
+    #headerwrap h1 {
+    	color:#ffffff;
+    	margin-top: 90px;
+    	padding-bottom: 30px;
+    	letter-spacing: 8px;
+    	font-size: 80px;
+    	font-weight: bold;
+    	text-shadow: 2px 2px 2px #000;
+    }
+
+    #headerwrap p {
+    	color:#ffffff;
+    	font-size: 40px;
+    	font-weight: 400;
+    	text-align: center;
+    	line-height: 40px;
+    	letter-spacing: 3px;
+    	margin-left: 15px;
+    	text-shadow: 1px 1px 1px #000;
+    }
+    .centered {
+      text-align: center;
+    }
+    #footerwrap {
+    	background: #2b2b2b;
+    	margin-top: 0px;
+    	padding-top: 40px;
+    	padding-bottom: 20px;
+    	border-bottom: 1px solid #ddd;
+    	text-align: center;
+    }
+
+    #footerwrap h4 {
+    	color: white;
+    }
   </style>
 </head>
 <body>
+  <div id="headerwrap" id="home" name="home">
+    <header class="clearfix">
+      <h1>Geosprocket Planet</h1>
+      <!--<p>- Gallery -</p>-->
+    </header>	    
+  </div><!-- /headerwrap -->
+  <!-- ==== ABOUT ==== -->
+  <div class="container" id="about" name="about">
+    <div class="row white">
+    <br>
+      <h3 class="centered">Breaking the earth apart, and piecing it back together</h3>
+      <hr>
+      
+      <div class="col-lg-6">
+        <p>I had an idea of the world as a cubist painting. Using a convolutional neural network, <a href="https://medium.com/planet-stories/drawing-the-planet-in-brushstrokes-bc54a686fb30#.exz251be8" target="_blank">I combined compelling satellite imagery with the bold work of abstract expressionist painter Francis Picabia.</a> The results you see collected here show approximately what I'd hoped: that humans shape our planet in distinct, clear ways. These range from wispy traces of wildfire smoke to rigid geometric landscapes, and are still evident when perspective is doubly-flattened: first by the aerial view, and second by a busybody algorithm. These images show a wrenching aesthetic dilemma: sometimes our hammerblow of deconstruction on the land is beautiful to behold, or at least sublime.</p>
+      </div><!-- col-lg-6 -->
+      
+      <div class="col-lg-6">
+        <p>I am not an artist; I make these pieces with some of my own sensibility expressed as a series of command line arguments — switches and weights. I’m amalgamating the true work that undergirds it: the <a href="https://www.moma.org/calendar/exhibitions/1670" target="_blank">paintcraft of Picabia</a>, the <a href="https://github.com/jcjohnson/neural-style" target="_blank">code of Justin Johnson</a>, the scientists who built <a href="https://arxiv.org/abs/1508.06576" target="_blank">the neural network</a>, and the engineers who flung <a href="https://www.planet.com/gallery/" target="_blank">satellites</a> into orbit. But in a way, this is meta-cubism: aided by machines, I am pulling apart composed materials and putting them back together, slightly rearranged. I would hope that this would raise at least a smirk from Picabia before he would throw a drink in my face.</p>
+        <blockquote class="blockquote-reverse">- Bill Morris</blockquote>
+      </div><!-- col-lg-6 -->
+    </div><!-- row -->
+  </div><!-- container -->
+  <section class="section-divider textdivider divider1">
+    <div class="container">
+      <hr>
+    </div><!-- container -->
+  </section><!-- section -->
   <div class="container">
-    <div class="row" style="text-align:center; padding:0 0 20px 0; margin-bottom:40px;">
+    <!--<div class="row" style="text-align:center; padding:0 0 20px 0; margin-bottom:40px;">
       <h1>Deconstructed Planet</h1>
       <h4><a href="https://medium.com/planet-stories/drawing-the-planet-in-brushstrokes-bc54a686fb30#.exz251be8" target="_blank">Deep-learning-assisted renderings</a> of satellite imagery in a generally-cubist form.</h4>
-    </div>
+    </div>-->
     <div id="main" class="row">
     </div>
   </div><!-- /container -->
+  <div id="footerwrap">
+    <div class="container">
+      <h4>by <a href="http://store.geosprocket.com">Geosprocket</a> - Copyright 2017</h4>
+    </div>
+  </div>
   <div tabindex="-1" class="modal fade" id="myModal" role="dialog" aria-labelledby="myModalLabel">
     <div class="modal-dialog">
       <div class="modal-content">
@@ -55,7 +148,6 @@
         renderLine.setAttribute('type', 'button')
         var renderA = document.createElement('a');
         renderA.title = 'Image ' + (i + 1)
-        renderA.href = '#'
         var render = document.createElement('img');
         render.src = records[i].gsx$renderurl.$t;
         render.className = 'img-responsive img-circle';
