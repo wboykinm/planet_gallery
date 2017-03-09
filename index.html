@@ -5,10 +5,10 @@
   <meta content="IE=edge" http-equiv="X-UA-Compatible">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
   <link rel="shortcut icon" type='image/x-icon' href="/favicon.ico"/>
-  <meta content="Deconstructed planet" name="description">
+  <meta content="Geosprocket planet" name="description">
   <meta content="Bill Morris" name="author">
   <title>Deconstructed planet</title>
-  <link href="https://maxcdn.bootstrapcdn.com/bootswatch/3.3.7/yeti/bootstrap.min.css" rel="stylesheet">
+  <link href="https://maxcdn.bootstrapcdn.com/bootswatch/3.3.7/readable/bootstrap.min.css" rel="stylesheet">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
   <style>
@@ -19,6 +19,12 @@
     .entry {
       cursor: pointer; 
       cursor: hand; 
+    }
+    .buy {
+      /*text-align: center;*/
+    }
+    .caption {
+      text-align: left;
     }
     #headerwrap {
     	background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(img/city_hall.jpg) no-repeat center top;
@@ -46,17 +52,17 @@
     	margin-top: 90px;
     	padding-bottom: 30px;
     	letter-spacing: 8px;
-    	font-size: 80px;
-    	font-weight: bold;
+    	font-size: 50px;
+    	font-weight: light;
     	text-shadow: 2px 2px 2px #000;
     }
 
     #headerwrap p {
     	color:#ffffff;
-    	font-size: 40px;
+    	font-size: 50px;
     	font-weight: 400;
     	text-align: center;
-    	line-height: 40px;
+    	line-height: 60px;
     	letter-spacing: 3px;
     	margin-left: 15px;
     	text-shadow: 1px 1px 1px #000;
@@ -73,16 +79,17 @@
     	text-align: center;
     }
 
-    #footerwrap h4 {
-    	color: white;
+    #footerwrap p {
+      font-size: 12px;
+    	color: #e2e3e3;
     }
   </style>
 </head>
 <body>
   <div id="headerwrap" id="home" name="home">
     <header class="clearfix">
-      <h1>Geosprocket Planet</h1>
-      <!--<p>- Gallery -</p>-->
+      <h1><img src="img/geosprocket1_512.png" class="img" width="128px"/></h1>
+      <p>Geosprocket Planet Gallery</p>
     </header>	    
   </div><!-- /headerwrap -->
   <!-- ==== ABOUT ==== -->
@@ -115,22 +122,41 @@
     <div id="main" class="row">
     </div>
   </div><!-- /container -->
+  <div class="container buy">
+    <div class="row">
+      <div class="col-md-8">
+        <h4>Prints of some of these renderings are available at the Geosprocket Planet store.<h4>
+      </div>
+      <div class="col-md-4">
+        <button role="button" class="btn btn-primary btn-lg text-center" href="http://store.geosprocket.com" target="_blank">Check it out</button>
+      </div>
+    </div>
+    <hr>
+  </div>
   <div id="footerwrap">
     <div class="container">
-      <h4>by <a href="http://store.geosprocket.com">Geosprocket</a> - Copyright 2017</h4>
+      <p>by <a href="http://store.geosprocket.com">Geosprocket</a> - Copyright 2017</p>
     </div>
   </div>
   <div tabindex="-1" class="modal fade" id="myModal" role="dialog" aria-labelledby="myModalLabel">
     <div class="modal-dialog">
       <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        </div>
       	<div class="modal-body">
           <img id="image-gallery-image" class="img-responsive" src="">
       	</div>
       	<div class="modal-footer">
-          <ul class="list-inline">
-            <li><p class="modal-title" id="myModalLabel"></p></li>
-            <li><button class="btn btn-default" data-dismiss="modal">Close</button></li>
-          </ul>
+          <div class="row">
+            <div class="col-md-8">
+              <p id="description-main" class="caption"></p>
+              <p id="citation" class="caption"></p>
+            </div>
+            <div class="col-md-4">
+              <button class="btn btn-default btn-sm" data-dismiss="modal">Close</button>
+            </div>
+          </div>
       	</div>
       </div>
     </div>
@@ -150,6 +176,8 @@
         renderA.title = 'Image ' + (i + 1)
         var render = document.createElement('img');
         render.src = records[i].gsx$renderurl.$t;
+        render.setAttribute('data-url', records[i].gsx$sourceurl.$t);
+        render.setAttribute('data-citation', records[i].gsx$source.$t);
         render.className = 'img-responsive img-circle';
         var caption = document.createElement('h5');
         caption.className = 'caption-hidden';
@@ -163,10 +191,15 @@
         $('.entry').click(function(){
           var entryParent = this.firstChild
           var caption = entryParent.text
-          var imageSrc = entryParent.firstChild.src
-          $('.modal-title').html(caption);
-          $('#image-gallery-image').attr('src', imageSrc)
-          //$('#myModal').modal({show:true});
+          var imageSrc1 = entryParent.firstChild.src
+          var imageSrc2 = entryParent.firstChild.dataset.url
+          var citationText = "<small><i>Image source: " + entryParent.firstChild.dataset.citation + " (Hover/tap rendering to see original)</i></small>"
+          $('#description-main').html(caption);
+          $('#citation').html(citationText)
+          $('#image-gallery-image')
+            .attr('src', imageSrc1)
+            .attr("onmouseover", "this.src='" + imageSrc2 + "';")
+            .attr("onmouseout", "this.src='" + imageSrc1 + "';")
         });
       });
     });
