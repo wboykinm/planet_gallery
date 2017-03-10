@@ -164,6 +164,10 @@
   <script>
     $.getJSON("https://spreadsheets.google.com/feeds/list/1HyZ4TWXrjxcTOjYhJpqEPYYiw3frfzcSRKZ2aT0i41M/1/public/values?alt=json", function(data) {
       records = data.feed.entry
+      records.sort(function(a, b){
+        return parseFloat(a.gsx$lat.$t) - parseFloat(b.gsx$lat.$t);
+      });
+      records = records.reverse();
       var mainList = document.getElementById('main');
       //console.log(records[1])
       for (i = 0; i < records.length; i++) {
